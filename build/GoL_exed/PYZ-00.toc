@@ -1,4 +1,4 @@
-('C:\\GameOfLifeExe\\build\\GoL_exed\\PYZ-00.pyz',
+('C:\\GameOfLifePyGameExed\\build\\GoL_exed\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\krist\\AppData\\Local\\Programs\\Python\\Python310\\lib\\__future__.py',
    'PYMODULE'),

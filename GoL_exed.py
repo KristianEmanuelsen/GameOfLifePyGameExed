@@ -15,7 +15,7 @@ CELL_SIZE = 20 # The size of a cell square
 class Cell:
     # Initializer for cells
     def __init__(self):
-        self._status = "dead"
+        self._alive = False
         self._neighbors = []
         self._number_of_living_neighbors = 0
         
@@ -23,15 +23,15 @@ class Cell:
 
     # Sets the cell status to dead
     def set_dead(self):
-        self._status = "dead"
+        self._alive = False
 
     # Sets the cell status to alive
     def set_alive(self):
-        self._status = "alive"
+        self._alive = True
 
     # Boolean function returning true if a cell is alive or false if a cell is dead
     def is_alive(self):
-        if self._status == "alive":
+        if self._alive == True:
             return True
         else:
             return False
@@ -39,7 +39,7 @@ class Cell:
     # Returns a green (or purple) color if a cell is alive and black color if a cell is dead (green defaults to 200 in RGB but can be changed)
     def get_status_color(self, green = 200):
         color_alive = (80, green, 80) 
-        if self._status == "alive":
+        if self._alive == True:
             return color_alive
         else:
             return COLOR_BG
@@ -187,9 +187,11 @@ class World:
     # Updates the player world grid, updating the alive/dead status of all cells and generation number for the next gen
     def update_world(self):
         for cell in self._grid.get_all_cells():
-            # See the corresponding methods in the cell class
             cell.count_living_neighbors()
+
+        for cell in self._grid.get_all_cells():
             cell.update_status()
+
         self._generations += 1
 
     # Converts the cell status from alive to dead and vice versa, useful when mouse clicking on a cell (controls for None, if resizing game window etc.)
